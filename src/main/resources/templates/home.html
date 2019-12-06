@@ -1,6 +1,7 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
 <head>
     <title>Home</title>
     <meta charset="utf-8">
@@ -41,7 +42,68 @@
         </tbody>
     </table>
     </div>
+<div>
+    <form action="//www.html.am/html-codes/forms/html-form-tag-action.cfm" target="result2" method="get">
+        <p>What would you like for lunch?</p>
+        <select name="fruit" multiple>
+            <option value ="none">Nothing</option>
+            <option value ="guava">Guava</option>
+            <option value ="lychee">Lychee</option>
+            <option value ="papaya">Papaya</option>
+            <option value ="watermelon">Watermelon</option>
+        </select>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+    <h3>Result:</h3>
+    <iframe name="result2" style="height:100px;width:200px;"></iframe>
 
+
+
+</div>
+
+<div>
+
+    <h2>Employee Details</h2>
+    <form:form method="post" commandName="employee">
+
+        <table>
+            <tr>
+                <td><form:label path="designation">Designation </form:label></td>
+                <td>
+                    <form:select path="designation">
+                        <form:option value="none" label="Select"/>
+                        <form:option value="Junior Developer" label="Junior Developer"/>
+                        <form:option value="Developer" label="Developer"/>
+                        <form:option value="Senior Developer" label="Senior Developer"/>
+                        <form:option value="Manager" label="Manager"/>
+                    </form:select>
+                </td>
+            </tr>
+            <tr>
+                <td><form:label path="department">Department</form:label></td>
+                <td>
+                    <form:select path="department">
+                        <form:options items="${availableDepartments}" />
+                    </form:select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><form:label path="hobbies">Hobbies</form:label></td>
+                <td>
+                    <form:select path="hobbies" multiple="true">
+                        <form:options items="${availableHobbies}"/>
+                    </form:select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+
+    </form:form>
+</div>
 </body>
 
 </html>
