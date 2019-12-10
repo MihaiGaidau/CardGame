@@ -3,6 +3,7 @@ package com.gaidau.cardGame.service;
 // Java program to implement
 // the next_permutation method
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NextPermutation {
@@ -83,6 +84,13 @@ public class NextPermutation {
 
         // Return true as the next_permutation is done
         return data;
+    }
+
+    public List<List<Integer>> allListPermutations(List<Integer> numbers){
+        List<List<Integer>> permutations = new ArrayList<>();
+
+
+        return permutations;
     }
 
     // Driver Code
