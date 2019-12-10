@@ -1,6 +1,7 @@
 package com.gaidau.cardGame.service;
 
 import com.gaidau.cardGame.bean.Expression;
+import com.gaidau.cardGame.service.StringPermutations;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import static com.gaidau.cardGame.service.NextPermutation.findNextPermutation;
 @Service
 @RequiredArgsConstructor
 public class ExpressionService {
+
+    private final StringPermutations stringPermutations;
 
     public List<Expression> getMatches(List<Integer> selectedCards, Integer result){
         List<Expression>  myList= new ArrayList<>();
@@ -37,8 +40,10 @@ public class ExpressionService {
 //        else {
 //           log.info("myArray: "+Arrays.toString(new List[]{selectedCards}));
 //        }
-
+            log.info("Mihai" + stringPermutations.allSymbolsPermutations(selectedCards.size(),4).toString());
 
         return  myList;
     }
+
+
 }
