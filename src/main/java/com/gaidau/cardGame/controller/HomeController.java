@@ -20,7 +20,7 @@ public class HomeController {
     @GetMapping("/")
     public String home(Model model) {
         List<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,4));
-        expressionService.getMatches(list,24);
+        expressionService.getMatches(list,2);
 
         model.addAttribute("message", "Spring Boot + Thymeleaf rocks");
         model.addAttribute("cardList",cardService.findAll());

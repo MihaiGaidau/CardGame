@@ -3,9 +3,17 @@ package com.gaidau.cardGame.service;
 // Java program to implement
 // the next_permutation method
 
-import java.util.ArrayList;
-import java.util.List;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Log4j2
+@Service
 public class NextPermutation {
 
     // Function to swap the data
@@ -77,17 +85,27 @@ public class NextPermutation {
         }
 
         // Swap the successor and the pivot
-        data = swap(data, nextGreater, last);
+        swap(data, nextGreater, last);
 
         // Reverse the suffix
-        data = reverse(data, last + 1, data.size() - 1);
+        reverse(data, last + 1, data.size() - 1);
 
         // Return true as the next_permutation is done
         return data;
     }
 
-    public List<List<Integer>> allListPermutations(List<Integer> numbers){
+    public List<List<Integer>> allListPermutations(List<Integer> selectedNumbers){
         List<List<Integer>> permutations = new ArrayList<>();
+        List<Integer> reverseSortedList = new ArrayList<>(selectedNumbers);
+        reverseSortedList.sort(Collections.reverseOrder());
+        List<Integer> list = selectedNumbers.stream().sorted().collect(Collectors.toList());
+        permutations.add(new ArrayList<>(list));
+        log.info("myArray: "+ Arrays.toString(new List[]{list}));
+        while (!reverseSortedList.equals(list)){
+            findNextPermutation(list);
+            permutations.add(new ArrayList<>(list));
+//            log.info("myArray: "+Arrays.toString(new List[]{list}));
+        }
 
 
         return permutations;

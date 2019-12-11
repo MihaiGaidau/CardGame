@@ -19,19 +19,6 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public class StringPermutations {
 
-//    public static void permutation(String str) {
-//        permutation("", str);
-//    }
-//
-//    private static void permutation(String prefix, String str) {
-//        int n = str.length();
-//        if (n == 0) log.debug(prefix);
-//        else {
-//            for (int i = 0; i < n; i++)
-//                permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
-//        }
-//    }
-
     public List<String> allSymbolsPermutations(Integer len,Integer base){
         List<String> list = new ArrayList<>();
         List<Integer> number = new ArrayList<Integer>(Collections.nCopies(len-1, 0));
