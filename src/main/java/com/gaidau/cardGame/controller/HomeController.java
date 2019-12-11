@@ -5,7 +5,8 @@ import com.gaidau.cardGame.service.ExpressionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+//@PathVariable("/")
 public class HomeController {
 
     private final ExpressionService expressionService;
@@ -25,5 +27,11 @@ public class HomeController {
         model.addAttribute("message", "Spring Boot + Thymeleaf rocks");
         model.addAttribute("cardList",cardService.findAll());
         return "home";
+    }
+
+    @PostMapping("/")
+    public String submitCards(Model model,  @ModelAttribute(value = "selectedCards")List<String> cards, BindingResult result){
+        model.addAttribute("selectedCards", cards);
+        return "success";
     }
 }

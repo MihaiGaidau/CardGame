@@ -13,97 +13,42 @@
     <script src="webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
-<p>Welcome </p>
-<p th:text="${message}">Message</p>
-
     <div>
-    <table class="table-bordered">
+    <table class="table-bordered" >
         <tbody>
-        <tr>
+        <tr >
         <td th:each="card : ${cardList}">
-            <img th:src="@{'/../static/images/playingCards/'+${card}+'H.png'}" alt="" border=3 height=100 width=100/>
+            <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'H.png'}" alt="" border=3 height=100 width=100/></input></a>
         </td>
         </tr>
         <tr>
             <td th:each="card : ${cardList}">
-                <img th:src="@{'/../static/images/playingCards/'+${card}+'C.png'}" alt="" border=3 height=100 width=100/>
+                <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'C.png'}" alt="" border=3 height=100 width=100/></input></a>
             </td>
         </tr>
         <tr>
             <td th:each="card : ${cardList}">
-                <img th:src="@{'/../static/images/playingCards/'+${card}+'D.png'}" alt="" border=3 height=100 width=100/>
+                <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'D.png'}" alt="" border=3 height=100 width=100/></input></a>
+
             </td>
         </tr>
         <tr>
             <td th:each="card : ${cardList}">
-                <img th:src="@{'/../static/images/playingCards/'+${card}+'S.png'}" alt="" border=3 height=100 width=100/>
+                <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'S.png'}" alt="" border=3 height=100 width=100/></input></a>
             </td>
+        </tr>
+        <tr>
+            <td>
+                <form name="test">
+                    <input type="number" name="selectedNumber">
+                </form>
+            </td>
+            <td colspan="2"><input type="submit" value="Submit" /></td>
+            <td colspan="2"><input type="submit" value="Reset" /></td>
         </tr>
         </tbody>
     </table>
     </div>
-<div>
-    <form action="//www.html.am/html-codes/forms/html-form-tag-action.cfm" target="result2" method="get">
-        <p>What would you like for lunch?</p>
-        <select name="fruit" multiple>
-            <option value ="none">Nothing</option>
-            <option value ="guava">Guava</option>
-            <option value ="lychee">Lychee</option>
-            <option value ="papaya">Papaya</option>
-            <option value ="watermelon">Watermelon</option>
-        </select>
-        <p><input type="submit" value="Submit"></p>
-    </form>
-    <h3>Result:</h3>
-    <iframe name="result2" style="height:100px;width:200px;"></iframe>
-
-
-
-</div>
-
-<div>
-
-    <h2>Employee Details</h2>
-    <form:form method="post" commandName="employee">
-
-        <table>
-            <tr>
-                <td><form:label path="designation">Designation </form:label></td>
-                <td>
-                    <form:select path="designation">
-                        <form:option value="none" label="Select"/>
-                        <form:option value="Junior Developer" label="Junior Developer"/>
-                        <form:option value="Developer" label="Developer"/>
-                        <form:option value="Senior Developer" label="Senior Developer"/>
-                        <form:option value="Manager" label="Manager"/>
-                    </form:select>
-                </td>
-            </tr>
-            <tr>
-                <td><form:label path="department">Department</form:label></td>
-                <td>
-                    <form:select path="department">
-                        <form:options items="${availableDepartments}" />
-                    </form:select>
-                </td>
-            </tr>
-
-            <tr>
-                <td><form:label path="hobbies">Hobbies</form:label></td>
-                <td>
-                    <form:select path="hobbies" multiple="true">
-                        <form:options items="${availableHobbies}"/>
-                    </form:select>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="2"><input type="submit" value="Submit" /></td>
-            </tr>
-        </table>
-
-    </form:form>
-</div>
 </body>
 
 </html>
