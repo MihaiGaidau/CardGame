@@ -1,6 +1,20 @@
 spring:
-  data:
-    mongodb:
-      host: localhost
-      port: 27017
+  datasource:
+    username: root
+    password:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+#  liquibase:
+#    change-log: classpath:/db/changelog/master.xml
+#    enabled: true
+#    user: ${spring.datasource.username}
+#    password: ${spring.datasource.password}
+#    url: ${spring.datasource.url}
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
 
