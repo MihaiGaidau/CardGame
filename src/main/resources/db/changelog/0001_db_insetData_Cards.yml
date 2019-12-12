@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mihai
+      changes:
+        - insert:
+            tableName: CARDS
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: A
+              - column:
+                  name: path
+                  value: /images/playingCards/AH.png
+              - column:
+                  name: value
+                  value: 1
+              - column:
+                  name: img_name
+                  value: AH
+        - insert:
+            tableName: CARDS
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: 2
+              - column:
+                  name: path
+                  value: /images/playingCards/2H.png
+              - column:
+                  name: value
+                  value: 2
+              - column:
+                  name: img_name
+                  value: 2H
+
