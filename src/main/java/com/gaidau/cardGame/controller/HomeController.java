@@ -3,7 +3,6 @@ package com.gaidau.cardGame.controller;
 import com.gaidau.cardGame.service.CardService;
 import com.gaidau.cardGame.service.ExpressionService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-//@PathVariable("/")
+@RequestMapping("/")
 public class HomeController {
 
     private final ExpressionService expressionService;

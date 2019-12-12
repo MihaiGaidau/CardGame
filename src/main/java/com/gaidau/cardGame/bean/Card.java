@@ -25,10 +25,12 @@ public class Card {
     private Integer value;
 
     @Column(nullable = false)
-    private String path;
+    private String type;
 
     @Column(nullable = false)
-    private String imgName;
+    private String path;
+
+
 
     @ManyToMany(mappedBy = "cards")
     private List<Game> games = new ArrayList<>();

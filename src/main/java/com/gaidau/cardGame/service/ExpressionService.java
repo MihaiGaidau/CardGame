@@ -1,23 +1,16 @@
 package com.gaidau.cardGame.service;
 
 import com.gaidau.cardGame.bean.Expression;
-import com.gaidau.cardGame.service.StringPermutations;
-import com.sun.security.jgss.InquireSecContextPermission;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptEngine;
-import javax.script.ScriptException;
 
-import static com.gaidau.cardGame.service.NextPermutation.findNextPermutation;
 
 @Log4j2
 @Service
@@ -30,14 +23,6 @@ public class ExpressionService {
     public List<Expression> getMatches(List<Integer> selectedCards, Integer result){
         List<Expression>  myList= new ArrayList<>();
 
-
-//        if (!findNextPermutation(selectedCards))
-//            log.info("There is no higher"
-//                    + " order permutation "
-//                    + "for the given data.");
-//        else {
-//           log.info("myArray: "+Arrays.toString(new List[]{selectedCards}));
-//        }
         List<List<Integer>> allPermutations = nextPermutation.allListPermutations(selectedCards);
         List<String> allSymbPermutations = stringPermutations.allSymbolsPermutations(selectedCards.size(),4);
 
@@ -57,6 +42,7 @@ public class ExpressionService {
 
         return  myList;
     }
+
     @SneakyThrows
     private Double evalExpression(String expression){
         ScriptEngineManager mgr = new ScriptEngineManager();

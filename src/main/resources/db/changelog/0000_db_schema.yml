@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mihai
+      changes:
+        createTable:
+          tableName: CARDS
+          columns:
+            - column:
+                name: id
+                type: int
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: name
+                type: varchar(50)
+                constraints:
+                  nullable: false
+            - column:
+                name: value
+                type: int
+                constraints:
+                  nullable: false
+            - column:
+                name: type
+                type: varchar(50)
+                constraints:
+                  nullable: false
+            - column:
+                name: path
+                type: varchar(150)
+                constraints:
+                  nullable: false
