@@ -1,5 +1,6 @@
 package com.gaidau.cardGame.bean;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,15 +19,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false)
     private String userName;
 
-    @Column(nullable = false, length = 150)
+    @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false,length = 150)
-    private String type;
+    @Column(nullable = false)
+    private String password;
 
+    @JsonBackReference
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
@@ -35,6 +37,16 @@ public class User {
     joinColumns = @JoinColumn(name = "user_id"),
     inverseJoinColumns = @JoinColumn(name = "game_id"))
     private List<Game> games = new ArrayList<>();
+
+    @JsonBackReference
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_name"))
+    private List<Role> roles = new ArrayList<>();
 
 
 }

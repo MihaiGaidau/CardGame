@@ -1,5 +1,7 @@
 package com.gaidau.cardGame.bean;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,13 +23,16 @@ public class Game {
     @Column(nullable = false)
     private Integer value;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "games")
     private List<User> users = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany
     @JoinColumn(name = "game_id")
     private List<MathExpression> expressions;
 
+    @JsonBackReference
     @ManyToMany(cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE

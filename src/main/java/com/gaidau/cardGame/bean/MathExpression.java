@@ -1,6 +1,7 @@
 package com.gaidau.cardGame.bean;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class MathExpression {
     @Column(nullable = false)
     private String expression;
 
+    @JsonManagedReference
     @ManyToOne(optional=false)
     @JoinColumn(name="game_id")
     private Game game;
