@@ -31,6 +31,6 @@ public class HomeController {
     @PostMapping("/")
     public String submitCards(Model model,  @ModelAttribute(value = "selectedCards")List<String> cards, BindingResult result){
         model.addAttribute("selectedCards", cards);
-        return "success";
+        return "home";
     }
 }

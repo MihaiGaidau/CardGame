@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml">
+      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Home</title>
     <meta charset="utf-8">
@@ -13,6 +14,8 @@
     <script src="webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<form action="" th:action="@{home.html}"  th:object="${user}"  method="post">
     <div>
     <table class="table-bordered" >
         <tbody>
@@ -49,6 +52,7 @@
         </tbody>
     </table>
     </div>
+</form>
 </body>
 
 </html>
