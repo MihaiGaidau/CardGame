@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="GAMES")
+@Table(name = "games")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -41,11 +41,6 @@ public class Game {
             joinColumns = @JoinColumn(name = "game_id"),
             inverseJoinColumns = @JoinColumn(name = "card_id"))
     private List<Card> cards = new ArrayList<>();
-
-
-
-
-
 
 
 }

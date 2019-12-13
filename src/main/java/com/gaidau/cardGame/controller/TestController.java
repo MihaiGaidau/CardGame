@@ -22,8 +22,8 @@ public class TestController {
     }
 
     @PostMapping("/processForm")
-    public String processForm(@ModelAttribute(value="foo") Foo foo) {
-        log.info("loggg: "+foo.getBar());
+    public String processForm(@ModelAttribute(value = "foo") Foo foo) {
+        log.info("loggg: " + foo.getBar());
         return "home";
     }
 

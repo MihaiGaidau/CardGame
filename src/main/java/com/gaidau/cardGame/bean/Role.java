@@ -10,17 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="ROLES")
+@Table(name = "roles")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role {
-    @Id
-    @Enumerated(EnumType.STRING)
-    private RoleType name;
-
     @JsonManagedReference
     @ManyToMany(mappedBy = "roles")
     List<User> users = new ArrayList<>();
+    @Id
+    @Enumerated(EnumType.STRING)
+    private RoleType name;
 
 }
