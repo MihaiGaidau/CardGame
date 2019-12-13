@@ -11,5 +11,5 @@ import java.util.List;
 @NoArgsConstructor
 public class Expression {
     private List<Integer> cards;
-    private String  symbols;
+    private String symbols;
 }

@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <title>Home</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
-    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">-->
+    <link href="webjars/bootstrap/3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
     <script src="webjars/bootstrap/3.3.7/dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<form action="" th:action="@{home.html}"  th:object="${user}"  method="post">
+<form action="" method="post" th:action="@{home.html}" th:object="${user}">
     <div>
-    <table class="table-bordered" >
-        <tbody>
-        <tr >
-        <td th:each="card : ${cardList}">
-            <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'H.png'}" alt="" border=3 height=100 width=100/></input></a>
-        </td>
-        </tr>
-        <tr>
-            <td th:each="card : ${cardList}">
-                <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'C.png'}" alt="" border=3 height=100 width=100/></input></a>
-            </td>
-        </tr>
-        <tr>
-            <td th:each="card : ${cardList}">
-                <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'D.png'}" alt="" border=3 height=100 width=100/></input></a>
+        <table class="table-bordered">
+            <tbody>
+            <tr>
+                <td th:each="card : ${cardList}">
+                    <a href="#"><input type="checkbox"><img alt="" border=3
+                                                            height=100 th:src="@{'/images/playingCards/'+${card}+'H.png'}" width=100/></input></a>
+                </td>
+            </tr>
+            <tr>
+                <td th:each="card : ${cardList}">
+                    <a href="#"><input type="checkbox"><img alt="" border=3
+                                                            height=100 th:src="@{'/images/playingCards/'+${card}+'C.png'}" width=100/></input></a>
+                </td>
+            </tr>
+            <tr>
+                <td th:each="card : ${cardList}">
+                    <a href="#"><input type="checkbox"><img alt="" border=3
+                                                            height=100 th:src="@{'/images/playingCards/'+${card}+'D.png'}" width=100/></input></a>
 
-            </td>
-        </tr>
-        <tr>
-            <td th:each="card : ${cardList}">
-                <a href="#"><input type="checkbox"><img th:src="@{'/images/playingCards/'+${card}+'S.png'}" alt="" border=3 height=100 width=100/></input></a>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <form name="test">
-                    <input type="number" name="selectedNumber">
-                </form>
-            </td>
-            <td colspan="2"><input type="submit" value="Submit" /></td>
-            <td colspan="2"><input type="submit" value="Reset" /></td>
-        </tr>
-        </tbody>
-    </table>
+                </td>
+            </tr>
+            <tr>
+                <td th:each="card : ${cardList}">
+                    <a href="#"><input type="checkbox"><img alt="" border=3
+                                                            height=100 th:src="@{'/images/playingCards/'+${card}+'S.png'}" width=100/></input></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form name="test">
+                        <input name="selectedNumber" type="number">
+                    </form>
+                </td>
+                <td colspan="2"><input type="submit" value="Submit"/></td>
+                <td colspan="2"><input type="submit" value="Reset"/></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </form>
 </body>

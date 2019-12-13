@@ -1,8 +1,5 @@
 package com.gaidau.cardGame.service;
 
-// Java program to implement
-// the next_permutation method
-
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +13,15 @@ import java.util.stream.Collectors;
 @Service
 public class NextPermutation {
 
-    // Function to swap the data
-    // present in the left and right indices
-    public static List<Integer> swap(List<Integer> data, int left, int right)
-    {
-
+    /**
+     * Method to swap the data present in the left and right indices
+     *
+     * @param data
+     * @param left
+     * @param right
+     * @return
+     */
+    public static List<Integer> swap(List<Integer> data, int left, int right) {
         // Swap the data
         int temp = data.get(left);
         data.set(left, data.get(right));
@@ -30,11 +31,15 @@ public class NextPermutation {
         return data;
     }
 
-    // Function to reverse the sub-array
-    // starting from left to the right
-    // both inclusive
-    public static List<Integer> reverse(List<Integer> data, int left, int right)
-    {
+    /**
+     * Method to reverse the sub-array tarting from left to the right both inclusive
+     *
+     * @param data
+     * @param left
+     * @param right
+     * @return
+     */
+    public static List<Integer> reverse(List<Integer> data, int left, int right) {
 
         // Reverse the sub-array
         while (left < right) {
@@ -47,10 +52,13 @@ public class NextPermutation {
         return data;
     }
 
-    // Function to find the next permutation
-    // of the given integer array
-    public static List<Integer> findNextPermutation(List<Integer> data)
-    {
+    /**
+     * Method to find the next permutation of the given integer array
+     *
+     * @param data
+     * @return
+     */
+    public static List<Integer> findNextPermutation(List<Integer> data) {
 
         // If the given dataset is empty
         // or contains only one element
@@ -94,34 +102,19 @@ public class NextPermutation {
         return data;
     }
 
-    public List<List<Integer>> allListPermutations(List<Integer> selectedNumbers){
+    public List<List<Integer>> allListPermutations(List<Integer> selectedNumbers) {
         List<List<Integer>> permutations = new ArrayList<>();
         List<Integer> reverseSortedList = new ArrayList<>(selectedNumbers);
         reverseSortedList.sort(Collections.reverseOrder());
         List<Integer> list = selectedNumbers.stream().sorted().collect(Collectors.toList());
         permutations.add(new ArrayList<>(list));
-        log.info("myArray: "+ Arrays.toString(new List[]{list}));
-        while (!reverseSortedList.equals(list)){
+        log.info("myArray: " + Arrays.toString(new List[]{list}));
+        while (!reverseSortedList.equals(list)) {
             findNextPermutation(list);
             permutations.add(new ArrayList<>(list));
-//            log.info("myArray: "+Arrays.toString(new List[]{list}));
         }
-
 
         return permutations;
     }
-
-    // Driver Code
-//    public static void main(String args[])
-//    {
-//        int data[] = { 1, 2, 3 };
-//        if (!findNextPermutation(data))
-//            System.out.println("There is no higher"
-//                    + " order permutation "
-//                    + "for the given data.");
-//        else {
-//            System.out.println(Arrays.toString(data));
-//        }
-//    }
 }
 
