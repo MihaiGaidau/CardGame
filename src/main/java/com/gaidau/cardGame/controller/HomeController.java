@@ -1,5 +1,7 @@
 package com.gaidau.cardGame.controller;
 
+import com.gaidau.cardGame.bean.Card;
+import com.gaidau.cardGame.dto.CardListDTO;
 import com.gaidau.cardGame.service.CardService;
 import com.gaidau.cardGame.service.ExpressionService;
 import lombok.RequiredArgsConstructor;
@@ -22,17 +24,21 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
-        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-        expressionService.getMatches(list, 2);
+//        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
+//        expressionService.getMatches(list, 2);
+        CardListDTO cardListDTO =  new CardListDTO();
+        cardListDTO.setCardList( new ArrayList<>(cardService.findAll()));
 
         model.addAttribute("message", "Spring Boot + Thymeleaf rocks");
-        model.addAttribute("cardList", cardService.findAll());
+        model.addAttribute("allCardList", new ArrayList<>(cardService.findAll()));
+        model.addAttribute("cardDTO", new CardListDTO());
+
         return "home";
     }
 
-    @PostMapping("/")
-    public String submitCards(Model model, @ModelAttribute(value = "selectedCards") List<String> cards) {
-        model.addAttribute("selectedCards", cards);
+    @PostMapping("/showExpressions")
+    public String submitCards(@ModelAttribute  CardListDTO cardDTO, Model model) {
+        model.addAttribute("selectedCards", cardDTO);
         return "home";
     }
 }

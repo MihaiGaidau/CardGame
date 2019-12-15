@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.security.Principal;
 
 @Log4j2
 @Controller
@@ -19,6 +22,7 @@ public class UserController {
     @GetMapping("/login")
     public String logIn(Model model) {
 
+        model.addAttribute("user", new User());
         return "login";
     }
 
@@ -28,10 +32,22 @@ public class UserController {
         return "signup";
     }
 
-    @PostMapping("/login")
-    public String processForm(@ModelAttribute(value = "user") User user) {
-        log.info("logmisa: " + user.toString());
-        return "home";
+//    @PostMapping("/home")
+//    public String processForm(@ModelAttribute(value = "user") User user) {
+//        log.info("logmisa: " + user.toString());
+//
+//        return "adminhome";
+//    }
+    @PostMapping("home")
+    public ModelAndView userHome(@ModelAttribute User user) {
+
+
+        ModelAndView model = new ModelAndView();
+
+        model.addObject("username", user.getUsername());
+
+        model.setViewName("adminhome");
+        return model;
     }
 
 
