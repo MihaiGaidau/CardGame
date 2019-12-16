@@ -1,5 +1,6 @@
 package com.gaidau.cardGame.service;
 
+import com.gaidau.cardGame.bean.Card;
 import com.gaidau.cardGame.bean.Expression;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -19,11 +20,15 @@ public class ExpressionService {
     private final StringPermutations stringPermutations;
     private final NextPermutation nextPermutation;
 
-    public List<Expression> getMatches(List<Integer> selectedCards, Integer result) {
+    public List<Expression> getMatches(List<Card> selectedCards, Integer result) {
         List<Expression> myList = new ArrayList<>();
+        List<Integer> selectedCardsValues = new ArrayList<>();
+        for (Card selectedCard : selectedCards) {
+            selectedCardsValues.add(selectedCard.getValue());
+        }
 
-        List<List<Integer>> allPermutations = nextPermutation.allListPermutations(selectedCards);
-        List<String> allSymbPermutations = stringPermutations.allSymbolsPermutations(selectedCards.size(), 4);
+        List<List<Integer>> allPermutations = nextPermutation.allListPermutations(selectedCardsValues);
+        List<String> allSymbPermutations = stringPermutations.allSymbolsPermutations(selectedCardsValues.size(), 4);
 
         for (List<Integer> list : allPermutations) {
             for (String symbols : allSymbPermutations) {

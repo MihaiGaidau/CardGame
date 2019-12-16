@@ -6,4 +6,5 @@
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <include file="/db/changelog/0000_db_schema.yml"/>
     <include file="/db/changelog/0001_db_insetData_Cards.yml"/>
+    <include file="/db/changelog/0002_db_insertData_Users.yml"/>
 </databaseChangeLog>

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: mihai
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: email
+                  value: gaidaumihai@gmail.com
+              - column:
+                  name: password
+                  value: gaidaumihai
+              - column:
+                  name: username
+                  value: gaidaumihai

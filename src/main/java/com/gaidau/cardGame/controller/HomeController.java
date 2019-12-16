@@ -1,6 +1,8 @@
 package com.gaidau.cardGame.controller;
 
 import com.gaidau.cardGame.bean.Card;
+import com.gaidau.cardGame.bean.Expression;
+import com.gaidau.cardGame.bean.Game;
 import com.gaidau.cardGame.dto.CardListDTO;
 import com.gaidau.cardGame.service.CardService;
 import com.gaidau.cardGame.service.ExpressionService;
@@ -38,7 +40,12 @@ public class HomeController {
 
     @PostMapping("/showExpressions")
     public String submitCards(@ModelAttribute  CardListDTO cardDTO, Model model) {
-        model.addAttribute("selectedCards", cardDTO);
-        return "home";
+//        Game currentGame = new Game(cardDTO.getValue(),)
+        List<Expression> list = new ArrayList<>(expressionService.getMatches(cardDTO.getCardList(),cardDTO.getValue()));
+            model.addAttribute("value",cardDTO.getValue());
+            model.addAttribute("expressions",list);
+//        model.addAttribute("selectedCards", cardDTO);cardDTO
+
+        return "showExpressions";
     }
 }
