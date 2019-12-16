@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name="EXPRESSIONS")
+@Table(name = "expressions")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,7 +22,7 @@ public class MathExpression {
     private String expression;
 
     @JsonManagedReference
-    @ManyToOne(optional=false)
-    @JoinColumn(name="game_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "game_id")
     private Game game;
 }

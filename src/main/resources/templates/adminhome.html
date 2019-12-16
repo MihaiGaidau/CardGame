@@ -6,7 +6,7 @@
     <title>SpringBoot Security</title>
 </head>
 <body>
-<p>Welcome Administrator(<span sec:authentication="principal.username">User</span>)</p>
+<p>Welcome  <span th:text="${username}" > username </span> </p>
 <p><a th:href="@{/logout}">Logout</a></p>
 </body>
 </html>

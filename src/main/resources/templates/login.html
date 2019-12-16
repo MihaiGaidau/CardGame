@@ -6,12 +6,12 @@
     <title>SpringBoot Security</title>
 </head>
 <body>
-<form action="login" th:action="@{/login.html}"  th:object="${user}"  method="post">
+<form action="#" th:action="@{/user/home}"  th:object="${user}"  method="post">
     <div th:if="${param.error}">
         <span>Invalid Email and Password.</span>
     </div>
-    <input type="email" name="username" placeholder="Email" />
-    <input type="password" name="password" placeholder="Password" />
+    <input  name="username" placeholder="name" th:field="*{username}" />
+    <input type="password" name="password" placeholder="Password" th:field="*{password}"/>
     <button type="submit">LogIn</button>
 </form>
 </body>
